@@ -15,10 +15,15 @@
             <label class="text-danger" *ngIf="lastname.invalid && lastname.touched">name required</label>
         </div>
     </div>
+    <div formControlName="gender" class=" gender">
+        <label for="gender">Gender: </label>
+        <input type="radio" name="gender" value="gender"> Male
+        <input type="radio" name="gender" value="gender"> Female
+    </div>
 
     <div class="email">
         <label for="email">Email:</label>
-        <input type="email" formControlName="email" class="form-control" placeholder="Enter Email">
+        <input type="email" formControlName="email" class="form-control email" placeholder="Enter Email">
         <label class="text-danger" *ngIf="email.invalid && email.touched">Enter valid email</label>
     </div>
 
@@ -59,7 +64,7 @@
         </div>
 
     </div>
-    
+
     <div formArrayName="skills">
         <label for="skills">Add skills:</label>
         <button class="skills" (click)="addskills()">+ Add another skills</button>
@@ -69,13 +74,22 @@
             <input class="form-control" type="text" [formControlName]="i">
         </div>
     </div>
+    <div class="Interest">
+        <label formControlName="Interest" for="Interest">Interested:</label>
+        <input type="checkbox" name="angular" value="Angular">
+        <label for="angular"> Angular</label><br>
+        <input type="checkbox" name="css" value="CSS">
+        <label for="css"> CSS</label><br>
+        <input type="checkbox" name="html" value="HTML">
+        <label for="html"> HTML</label><br>
+    </div>
 
     <div class="form-check">
         <input formControlName="agree" class="form-check-input" type="checkbox" value="">
         <label class="form-check-label" for="defaultCheck1">I Agree </label>
         <label class="text-danger" *ngIf="agree.invalid"></label>
     </div>
-    
+
     <div>
         <button class="btn btn-primary mb-2" type="submit" (click)="send()"
             [disabled]="register.invalid">SUBMIT</button>

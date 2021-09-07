@@ -16,6 +16,7 @@ constructor (fb: FormBuilder)  {
   this.register = fb.group({
     name : [null, Validators.required],
     lastname : [null, Validators.required],
+    gender: [null],
     email: [null, [Validators.required, Validators.email]],
     date: [null,Validators.required],
     password:[null,[Validators.required, Validators.pattern('((?=.*[a-z])(?=.*[A-Z]).{8,30})')]],
@@ -27,7 +28,8 @@ constructor (fb: FormBuilder)  {
     pincode:new FormControl(null, [Validators.required])
   }),
   skills: fb.array([
-  ])
+  ]),
+  Interest:[null],
 });
 }
 
@@ -42,6 +44,11 @@ addskills() {
 get lastname () {
   return this.register.get('lastname') as FormControl;
 }
+
+get gender () {
+  return this.register.get('gender') as FormControl;
+}
+
 
 get name () {
   return this.register.get('name') as FormControl;
@@ -64,13 +71,18 @@ get message () {
   return this.register.get('message') as FormControl;
 }
 
+get Interest () {
+  return this.register.get('Interest') as FormControl;
+}
+
+
 get agree () {
   return this.register.get('agree') as FormControl;
 }
 
 send () {
   console.log(this.register.value)
-  localStorage.setItem('register', JSON.stringify(this.register.value)); 
+  localStorage.setItem( this.register.value.email, JSON.stringify(this.register.value));
 }
 
 reset () {
@@ -78,7 +90,6 @@ reset () {
 }
 
 ngOnInit () {
-
 }
 
 }
