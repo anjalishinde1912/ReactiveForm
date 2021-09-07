@@ -1,0 +1,85 @@
+<form [formGroup]="register" class="container">
+    <img src="assets/logo.png">
+
+    <h4>Registration Form</h4>
+    <div class="names">
+        <div class="firstname ">
+            <label for="name">Name:</label>
+            <input type="text" formControlName="name" class="form-control" placeholder="Enter name">
+            <label class="text-danger" *ngIf="name.invalid && name.touched">name required</label>
+        </div>
+
+        <div class="lastname">
+            <label for="name">Last Name:</label>
+            <input type="text" formControlName="lastname" class="form-control" placeholder="Enter name">
+            <label class="text-danger" *ngIf="lastname.invalid && lastname.touched">name required</label>
+        </div>
+    </div>
+
+    <div class="email">
+        <label for="email">Email:</label>
+        <input type="email" formControlName="email" class="form-control" placeholder="Enter Email">
+        <label class="text-danger" *ngIf="email.invalid && email.touched">Enter valid email</label>
+    </div>
+
+    <div class="date">
+        <label for="date">Birth date:</label>
+        <input type="date" formControlName="date" class="form-control">
+        <label class="text-danger" *ngIf="date.invalid && date.touched">salect date</label>
+    </div>
+
+    <div class="password">
+        <label for="password">Password:</label>
+        <input type="password" formControlName="password" class="form-control" placeholder="Enter password">
+        <label class="text-danger" *ngIf="password.invalid && password.touched">password weak</label>
+    </div>
+
+    <div class="message">
+        <label>Message:</label>
+        <textarea cols="3" rows="3" type="text" formControlName="message" class="form-control"
+            placeholder="Type message"></textarea>
+        <label class="text-danger" *ngIf="message.invalid && message.touched">Enter atleast 10 word</label>
+    </div>
+
+    <div formGroupName="address" class="address">
+        <label>Address:</label>
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" class="form-control" name="city" formControlName="city">
+        </div>
+
+        <div class="form-group">
+            <label for="street">Street</label>
+            <input type="text" class="form-control" name="street" formControlName="street">
+        </div>
+
+        <div class="form-group">
+            <label for="pincode">Pin Code</label>
+            <input type="number" class="form-control" name="pincode" formControlName="pincode">
+        </div>
+
+    </div>
+    
+    <div formArrayName="skills">
+        <label for="skills">Add skills:</label>
+        <button class="skills" (click)="addskills()">+ Add another skills</button>
+
+        <div *ngFor="let skill of skills.controls; let i=index">
+            <label for="skills-{{ i }}">Skills:</label>
+            <input class="form-control" type="text" [formControlName]="i">
+        </div>
+    </div>
+
+    <div class="form-check">
+        <input formControlName="agree" class="form-check-input" type="checkbox" value="">
+        <label class="form-check-label" for="defaultCheck1">I Agree </label>
+        <label class="text-danger" *ngIf="agree.invalid"></label>
+    </div>
+    
+    <div>
+        <button class="btn btn-primary mb-2" type="submit" (click)="send()"
+            [disabled]="register.invalid">SUBMIT</button>
+        <button class="btn btn-primary mb-2" type="reset" (click)="reset()">RESET</button>
+    </div>
+
+</form>

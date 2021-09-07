@@ -1,0 +1,62 @@
+.container {
+    border-radius: 20px;
+    background-color: rgb(191, 199, 188);
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    margin-left: 45%;
+  }
+
+  h4 {
+    text-align:center;
+  }
+
+  .names {
+    display: flex;
+    justify-content: space-between;
+  }
+  .firstname {
+    width: 45%;
+  }
+  .lastname {
+    width: 45%;
+  }
+.address {
+  display: flex;
+  justify-content: space-between;
+}
+.form-group {
+  width: 30%;
+}
+
+label {
+  font-size: large;
+}
+
+.skills {
+  padding: 5px;
+  margin: 15px;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: rgb(66, 81, 211);
+}
+
+  button[type=submit], [type=reset] {
+    padding: 10px;
+    margin: 15px
+    
+  }
+  
+  button[type=submit]:hover, [type=reset]:hover {
+    background-color: red;
+  }
+
+  input.ng-invalid:hover {
+    border-color: red;
+  }
+
