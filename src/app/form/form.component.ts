@@ -33,6 +33,7 @@ constructor (fb: FormBuilder)  {
 });
 }
 
+
 get skills() {
   return this.register.get('skills') as FormArray;
 }
@@ -48,7 +49,6 @@ get lastname () {
 get gender () {
   return this.register.get('gender') as FormControl;
 }
-
 
 get name () {
   return this.register.get('name') as FormControl;

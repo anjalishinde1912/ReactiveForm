@@ -15,10 +15,10 @@
             <label class="text-danger" *ngIf="lastname.invalid && lastname.touched">name required</label>
         </div>
     </div>
-    <div formControlName="gender" class=" gender">
+    <div  class=" gender" >
         <label for="gender">Gender: </label>
-        <input type="radio" name="gender" value="gender"> Male
-        <input type="radio" name="gender" value="gender"> Female
+        <input type="radio" formControlName="gender" name="gender" value="male"> Male
+        <input type="radio" formControlName="gender" name="gender" value="Female"> Female
     </div>
 
     <div class="email">
@@ -75,12 +75,12 @@
         </div>
     </div>
     <div class="Interest">
-        <label formControlName="Interest" for="Interest">Interested:</label>
-        <input type="checkbox" name="angular" value="Angular">
+        <label for="Interest">Interested:</label>
+        <input formControlName="Interest" type="checkbox" value="Angular">
         <label for="angular"> Angular</label><br>
-        <input type="checkbox" name="css" value="CSS">
-        <label for="css"> CSS</label><br>
-        <input type="checkbox" name="html" value="HTML">
+        <input formControlName="Interest" type="checkbox" value="CSS">
+        <label  for="css"> CSS</label><br>
+        <input formControlName="Interest" type="checkbox" value="HTML">
         <label for="html"> HTML</label><br>
     </div>
 
