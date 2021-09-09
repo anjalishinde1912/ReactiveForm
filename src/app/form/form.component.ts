@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl,FormArray, FormGroup, AbstractControl, Validators,FormBuilder, FormControlDirective } from '@angular/forms';
+import { FormControl,FormArray, FormGroup, AbstractControl, Validators,FormBuilder, FormControlDirective } from '@angular/forms'
 
 @Component({
   selector: 'app-form',
@@ -11,8 +11,7 @@ register!: FormGroup;
 address!: FormGroup;
 fb!: FormBuilder;
 
-
-constructor (fb: FormBuilder)  {
+  constructor (fb: FormBuilder)  {
   this.register = fb.group({
     name : [null, Validators.required],
     lastname : [null, Validators.required],
@@ -23,16 +22,27 @@ constructor (fb: FormBuilder)  {
     message: [null,[Validators.required, Validators.minLength(10)]],
     agree: [false, Validators.requiredTrue],
     address:new FormGroup({
-    city: new FormControl(null, Validators.required),
-    street: new FormControl(null, Validators.required),
+    city: new FormControl(null, [Validators.required]),
+    street: new FormControl(null, [Validators.required]),
     pincode:new FormControl(null, [Validators.required])
   }),
   skills: fb.array([
   ]),
-  Interest:[null],
+  Interest:[this.put()]
 });
 }
 
+get city (): any {
+  return this.register.get('city') as FormControl;
+}
+
+get street () {
+  return this.register.get('street') as FormControl;
+}
+
+get pincode () {
+  return this.register.get('pincode') as FormControl;
+}
 
 get skills() {
   return this.register.get('skills') as FormArray;
@@ -71,11 +81,6 @@ get message () {
   return this.register.get('message') as FormControl;
 }
 
-get Interest () {
-  return this.register.get('Interest') as FormControl;
-}
-
-
 get agree () {
   return this.register.get('agree') as FormControl;
 }
@@ -88,6 +93,25 @@ send () {
 reset () {
   this.register.reset
 }
+
+options = ['HTML', 'CSS', 'Angular', 'javascript', 'SCSS']
+selected = [] as any
+  
+onChange( item: any) {
+    if(this.selected.indexOf(item) == -1){
+    this.selected.push(item);
+    } else {
+      this.selected.splice(this.selected.indexOf(item), 1)
+    }
+  }
+  
+  put() {
+     return this.selected;
+  }
+
+  get Interest () {
+    return this.register.get('Interest') as FormControl;
+  }
 
 ngOnInit () {
 }

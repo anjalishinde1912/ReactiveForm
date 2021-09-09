@@ -15,7 +15,7 @@
             <label class="text-danger" *ngIf="lastname.invalid && lastname.touched">name required</label>
         </div>
     </div>
-    <div  class=" gender" >
+    <div class=" gender">
         <label for="gender">Gender: </label>
         <input type="radio" formControlName="gender" name="gender" value="male"> Male
         <input type="radio" formControlName="gender" name="gender" value="Female"> Female
@@ -43,7 +43,7 @@
         <label>Message:</label>
         <textarea cols="3" rows="3" type="text" formControlName="message" class="form-control"
             placeholder="Type message"></textarea>
-        <label class="text-danger" *ngIf="message.invalid && message.touched">Enter atleast 10 word</label>
+        <label class="text-danger" *ngIf="message.invalid && message.touched">Enter message more than 10 words</label>
     </div>
 
     <div formGroupName="address" class="address">
@@ -52,7 +52,7 @@
             <label for="city">City</label>
             <input type="text" class="form-control" name="city" formControlName="city">
         </div>
-
+       
         <div class="form-group">
             <label for="street">Street</label>
             <input type="text" class="form-control" name="street" formControlName="street">
@@ -74,16 +74,13 @@
             <input class="form-control" type="text" [formControlName]="i">
         </div>
     </div>
-    <div class="Interest">
-        <label for="Interest">Interested:</label>
-        <input formControlName="Interest" type="checkbox" value="Angular">
-        <label for="angular"> Angular</label><br>
-        <input formControlName="Interest" type="checkbox" value="CSS">
-        <label  for="css"> CSS</label><br>
-        <input formControlName="Interest" type="checkbox" value="HTML">
-        <label for="html"> HTML</label><br>
+    <label>List:</label>
+    <div class ="list" *ngFor="let item of options">
+        <input type="checkbox" (change)="onChange(item)">
+        {{item}}
     </div>
-
+    <label class="text-danger" *ngIf="!selected.length">select one option</label>
+    
     <div class="form-check">
         <input formControlName="agree" class="form-check-input" type="checkbox" value="">
         <label class="form-check-label" for="defaultCheck1">I Agree </label>
